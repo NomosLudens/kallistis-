@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --parchment: 39 55% 78%;
+    --parchment-dark: 36 43% 61%;
+    --parchment-deep: 30 42% 44%;
+    --ink: 30 100% 5%;
+    --ink-light: 30 69% 14%;
+    --blood: 4 62% 37%;
+    --blood-dark: 4 60% 22%;
+    --gold: 40 46% 56%;
+    --gold-light: 42 60% 73%;
+    --ash: 250 8% 24%;
+    --void: 245 16% 5%;
+    --mist: 250 8% 42%;
+    --green-corruption: 100 47% 20%;
+    --blue-abyss: 218 47% 20%;
+
+    --background: 30 30% 4%;
+    --foreground: 39 55% 78%;
+    --card: 39 55% 78%;
+    --card-foreground: 30 100% 5%;
+    --popover: 39 55% 78%;
+    --popover-foreground: 30 100% 5%;
+    --primary: 36 55% 51%;
+    --primary-foreground: 39 40% 88%;
+    --secondary: 30 69% 14%;
+    --secondary-foreground: 36 55% 51%;
+    --muted: 30 20% 40%;
+    --muted-foreground: 30 20% 50%;
+    --accent: 0 73% 33%;
+    --accent-foreground: 39 40% 88%;
+    --destructive: 0 73% 33%;
+    --destructive-foreground: 39 40% 88%;
+    --border: 30 69% 14%;
+    --input: 30 69% 14%;
+    --ring: 36 55% 51%;
+    --radius: 0.25rem;
+    --sidebar-background: 30 100% 5%;
+    --sidebar-foreground: 30 20% 50%;
+    --sidebar-primary: 36 55% 51%;
+    --sidebar-primary-foreground: 39 40% 88%;
+    --sidebar-accent: 0 73% 33%;
+    --sidebar-accent-foreground: 39 40% 88%;
+    --sidebar-border: 30 69% 14%;
+    --sidebar-ring: 36 55% 51%;
+
+    /* ═══ VELMOOR DARK-FANTASY TOKENS — "Obsidiana, Osso & Brasa" ═══ */
+    /* Bases (obsidiana fria, subtom azul-violeta) */
+    --vm-void: #0a0a0e;
+    --vm-ink: #13121b;
+    --vm-ink-2: #1c1a26;
+    --vm-panel: #0d0d12;
+    --vm-panel-2: #17161f;
+    --vm-panel-3: #08080c;
+    /* Bordas (ardósia fria) */
+    --vm-border: #33303f;
+    --vm-border-soft: #1c1a26;
+    /* Metal — ouro-osso desaturado */
+    --vm-gold: #c3a45e;
+    --vm-gold-light: #e2c98f;
+    --vm-gold-dim: #8c8478;
+    --vm-gold-faint: #4a4438;
+    --vm-gold-deep: #5c3010;
+    /* Brasa / sangue */
+    --vm-blood: #9c2620;
+    --vm-blood-dark: #3a0e0c;
+    --vm-ember: #c0392b;
+    /* Pergaminho (documento envelhecido — mantido quente para contraste) */
+    --vm-parchment: #f0ddb0;
+    --vm-parchment-2: #e8d098;
+    --vm-parchment-3: #dfc882;
+    --vm-parchment-ink: #1a1622;
+    --vm-parchment-head: #5c3010;
+    --vm-parchment-border: #a07840;
+    /* Acento arcano (Mag.IA) */
+    --vm-arcane: #c084fc;
+    --vm-arcane-deep: #6b21a8;
+    --vm-arcane-border: #3d2050;
+    /* Status (criação / level-up) */
+    --vm-status-progress: #7da3c9;
+    --vm-status-ok: #9bc97d;
+    --vm-status-warn: #c3a45e;
+    --vm-status-danger: #c97d7d;
+    --vm-status-feat: #b27dc9;
+    /* Efeitos */
+    --vm-glow-gold: rgba(195, 164, 94, 0.35);
+    --vm-glow-ember: rgba(192, 57, 43, 0.45);
+    --vm-shadow-deep: 0 8px 28px rgba(0, 0, 0, 0.7);
+    /* Tipografia */
+    --vm-font-display: 'Cinzel Decorative', serif;
+    --vm-font-heading: 'Cinzel', serif;
+    --vm-font-body: 'Spectral', Georgia, 'Times New Roman', serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--vm-font-body);
+    font-size: 1.06rem;
+    line-height: 1.65;
+    letter-spacing: 0.003em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-color: hsl(var(--void));
+    color: hsl(var(--ink));
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 18% 40%, hsla(var(--blood), 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 82% 15%, hsla(var(--gold), 0.045) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, rgba(40, 20, 60, 0.10) 0%, transparent 60%);
+  }
+}
+
+/* ═══ VELMOOR UTILITY LAYER ═══ */
+@layer components {
+  /* Moldura escura padrão das ferramentas/abas */
+  .vm-panel {
+    background: linear-gradient(145deg, var(--vm-ink) 0%, var(--vm-void) 100%);
+    border: 1px solid var(--vm-border);
+    border-radius: 8px;
+  }
+  .vm-panel-header {
+    font-family: var(--vm-font-heading);
+    color: var(--vm-gold-light);
+    background: linear-gradient(135deg, var(--vm-gold-deep) 0%, #3d2010 100%);
+    border-bottom: 1px solid var(--vm-border);
+    letter-spacing: 0.04em;
+  }
+  /* Título de seção (regras, ferramentas) */
+  .vm-section-title {
+    font-family: var(--vm-font-display);
+    color: var(--vm-gold);
+    text-shadow: 0 0 15px rgba(201, 148, 58, 0.3);
+    border-bottom: 1px solid var(--vm-border);
+  }
+  /* Citação in-world */
+  .vm-quote {
+    background: rgba(139, 26, 26, 0.06);
+    border-left: 3px solid var(--vm-blood);
+    border-right: 3px solid var(--vm-blood);
+    color: var(--vm-parchment-head);
+    font-style: italic;
+  }
+  /* Chip / etiqueta */
+  .vm-chip {
+    font-family: var(--vm-font-heading);
+    background: rgba(201, 148, 58, 0.1);
+    border: 1px solid rgba(201, 148, 58, 0.45);
+    color: var(--vm-gold);
+    border-radius: 4px;
+  }
+  /* Campos de formulário em fundo escuro */
+  .vm-input {
+    background: var(--vm-panel-3);
+    border: 1px solid rgba(201, 148, 58, 0.3);
+    color: #d4c4a8;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .vm-input:focus {
+    border-color: var(--vm-gold);
+    box-shadow: 0 0 0 2px rgba(201, 148, 58, 0.15);
+  }
+  /* Botões */
+  .vm-btn {
+    font-family: var(--vm-font-heading);
+    background: var(--vm-gold);
+    color: var(--vm-panel);
+    border: none;
+    border-radius: 6px;
+    transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.5, 1), filter 0.16s, box-shadow 0.16s;
+  }
+  .vm-btn:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 4px 16px var(--vm-glow-gold); }
+  .vm-btn:active { transform: scale(0.93) translateY(0); filter: brightness(0.9); box-shadow: inset 0 3px 10px rgba(0,0,0,0.5); }
+  .vm-btn-blood {
+    font-family: var(--vm-font-heading);
+    background: linear-gradient(180deg, var(--vm-blood) 0%, var(--vm-blood-dark) 100%);
+    color: var(--vm-parchment);
+    border: 1px solid var(--vm-gold);
+    border-radius: 6px;
+    transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.5, 1), filter 0.16s, box-shadow 0.16s;
+  }
+  .vm-btn-blood:hover { filter: brightness(1.15); transform: translateY(-1px); box-shadow: 0 4px 18px var(--vm-glow-ember); }
+  .vm-btn-blood:active { transform: scale(0.93) translateY(0); filter: brightness(0.85); box-shadow: inset 0 3px 12px rgba(0,0,0,0.6); }
+  .vm-btn-ghost {
+    font-family: var(--vm-font-heading);
+    background: rgba(195, 164, 94, 0.08);
+    color: var(--vm-gold);
+    border: 1px solid rgba(195, 164, 94, 0.4);
+    border-radius: 6px;
+    transition: background 0.16s, transform 0.16s cubic-bezier(0.34, 1.56, 0.5, 1), box-shadow 0.16s;
+  }
+  .vm-btn-ghost:hover { background: rgba(195, 164, 94, 0.18); box-shadow: 0 0 0 1px rgba(195,164,94,0.3); }
+  .vm-btn-ghost:active { transform: scale(0.93); background: rgba(195, 164, 94, 0.28); box-shadow: inset 0 2px 8px rgba(0,0,0,0.4); }
+}
+
+/* ═══ ANIMAÇÃO PROFUNDA DE CLIQUE — todos os botões ═══ */
+@keyframes vm-press {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+@layer utilities {
+  button:not(:disabled) {
+    transition: transform 0.13s cubic-bezier(0.34, 1.6, 0.5, 1), filter 0.13s, box-shadow 0.13s;
+  }
+  button:not(:disabled):active {
+    transform: scale(0.92) !important;
+    filter: brightness(0.88);
+  }
+}
+
+/* ═══ CUSTOM SCROLLBAR ═══ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--void)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--ink-light)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--gold)); }
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes diceRoll {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(180deg) scale(1.2); }
+  50% { transform: rotate(270deg) scale(0.9); }
+  75% { transform: rotate(330deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes resultPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.dice-rolling { animation: diceRoll 0.5s ease-out; }
+.result-pop { animation: resultPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* ═══ PARCHMENT NOISE TEXTURE ═══ */
+.parchment-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ═══ ACT COUNTER ═══ */
+.acts-list { counter-reset: act-counter; }
+.act-item { counter-increment: act-counter; }
+.act-item::before {
+  content: 'ATO ' counter(act-counter);
+  background: hsl(var(--blood));
+  color: hsl(var(--parchment));
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  padding: 3px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  min-width: 42px;
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* ═══ FEITIÇAR.IA MARKDOWN ═══ */
+.feiticar-markdown h1, .feiticar-markdown h2, .feiticar-markdown h3 {
+  font-family: 'Cinzel', serif;
+  color: #c9943a;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+.feiticar-markdown h1 { font-size: 1.1em; }
+.feiticar-markdown h2 { font-size: 1em; }
+.feiticar-markdown h3 { font-size: 0.92em; }
+.feiticar-markdown p { margin-bottom: 0.5em; }
+.feiticar-markdown ul, .feiticar-markdown ol { padding-left: 1.2em; margin-bottom: 0.5em; }
+.feiticar-markdown li { margin-bottom: 0.2em; }
+.feiticar-markdown strong { color: #e8c060; }
+.feiticar-markdown code {
+  background: rgba(201,148,58,0.1);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.88em;
+  color: #e8c060;
+}
+.feiticar-markdown pre {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid #3d2b0a;
+  border-radius: 4px;
+  padding: 0.8em;
+  overflow-x: auto;
+  margin-bottom: 0.6em;
+}
+.feiticar-markdown pre code { background: none; padding: 0; }
+.feiticar-markdown blockquote {
+  border-left: 3px solid #8b1a1a;
+  padding-left: 0.8em;
+  margin: 0.5em 0;
+  font-style: italic;
+  color: #a08060;
+}
+.feiticar-markdown table { border-collapse: collapse; width: 100%; margin-bottom: 0.6em; overflow-x: auto; display: block; }
+.feiticar-markdown th, .feiticar-markdown td { border: 1px solid #3d2b0a; padding: 0.3em 0.6em; text-align: left; font-size: 0.85em; word-break: break-word; }
+.feiticar-markdown th { background: rgba(201,148,58,0.15); color: #c9943a; font-family: 'Cinzel', serif; font-weight: 600; }
+.feiticar-markdown td { color: #c9b080; }

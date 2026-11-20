@@ -1,0 +1,10 @@
+name = "lastarc-api"
+main = "src/index.ts"
+compatibility_date = "2026-07-22"
+
+[vars]
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
+[[kv_namespaces]]
+binding = "LASTARC_CACHE"
+id = "your-kv-namespace-id"
